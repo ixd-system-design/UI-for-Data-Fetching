@@ -1,0 +1,26 @@
+[
+    {
+        "name":"Cocktails A to Z",
+        "url": "/cocktails",
+        "description": "Sometimes an alphabetical index makes sense, especially when the dataset supports it.",
+        "api": "https://www.thecocktaildb.com/"
+    },
+    {
+        "name":"Random Emojii",
+        "url": "/emojii",
+        "description": "You could create a category navigation with your own styling to set the narrative.",
+        "api": "https://github.com/cheatsnake/emojihub"
+    },
+    {
+        "name":"NASA APOD",
+        "url": "/nasa",
+        "description": "NASA's Astronomy Picture of the Day aligns nicely with a Date Picker UI.",
+        "api": "https://api.nasa.gov/"
+    },
+    {
+        "name":"IMDB Search",
+        "url": "/movies",
+        "description": "If your API has a search endpoint, it may be feasible to create a search box for your users.",
+        "api": "https://rapidapi.com/apidojo/api/online-movie-database"
+    }
+]

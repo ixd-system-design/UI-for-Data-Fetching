@@ -1,0 +1,68 @@
+/* Twentieth Century fonts are loaded via Monotype. See the head section in index.html for details.  */
+body{
+    text-align: center;
+    margin: 0;
+    font-family: 'TwentiethCenturyMedium'
+}
+
+/* Page layout is vertical and includes header, main, and footer. This is handled via a Flexbox column. */
+#page {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Menu items are arranged horizontally in a wrapping fashion. This is done with a center justified Flexbox row.  */
+#menu{  
+  display: flex; 
+  flex-direction: row;
+  flex-wrap: wrap; 
+  justify-content: center; 
+}
+
+/* Each menuitem has two elements (the emoji and the label).  To arrange them vertically within the menuitem, a Flex column is used.  */
+#menu a{ 
+  display: flex;
+  flex-direction: column; 
+  height: 80px;
+  width: 120px; 
+  justify-content: center;  
+  cursor: pointer;
+  border-radius: 1rem;
+} 
+
+/* setup a simple hover effect on the navigation bar.*/
+#menu a:hover{ 
+  background: #eee;  
+}
+
+
+/* Emojis and labels have different font sizes. I'm using relative units to set these. Read more info about relative units here: https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#ems_and_rems  */
+#menu .emoji{
+  font-size: 1.2em;
+}
+
+#menu .label{ 
+  font-size: 0.8em;
+  margin-top: 0.3rem;
+}
+
+/* A large font size on main content yields a big emoji:  satisfying! */
+main#content{
+    font-size: 12rem;
+    flex-grow: 1;
+}
+
+
+footer{
+    padding: 1rem; 
+    font-family: 'TwentiethCenturyLightItalic'
+}
+
+
+nav{
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+}

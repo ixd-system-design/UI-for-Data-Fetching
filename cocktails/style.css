@@ -1,0 +1,68 @@
+/* Fonts are loaded via Monotype. See the head section in index.html for details.  */
+body{
+    text-align: center;
+    margin: 0;
+    font-family: 'TwentiethCenturyMedium'
+}
+
+/* Page layout is vertical and includes header, main, and footer. This is handled via a Flexbox column. */
+#page {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Menu items and Main content both share a similar flexbox layout strategy.  */
+#menu, #content{  
+  display: flex; 
+  flex-direction: row;
+  flex-wrap: wrap; 
+  justify-content: center; 
+}
+
+/* Each menuitem has a rounded corners and pointer cursor applied  */
+#menu a{ 
+  padding: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  color: #666;
+} 
+
+/* setup a simple hover effect on the menu.*/
+#menu a:hover{ 
+  color: #000;
+  background: #eee;  
+}
+
+/* JavaScript dynamically assigns the "selected" class to a clicked menuitem */
+ #menu .selected{
+   color: white;
+   background: maroon;
+ }
+ 
+/* each drink div holds the image and title. The layout for this is done via a flexbox column. */
+.drink{
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;  
+  width: 120px; 
+  justify-content: center; 
+}
+
+/* set a rounded corner on the image thumbnails. */
+.drink img{
+  border-radius: 1rem;
+}
+
+footer{
+    padding: 1rem; 
+    font-family: 'TwentiethCenturyLightItalic'
+}
+
+
+nav{
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+}
