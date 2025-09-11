@@ -56,17 +56,17 @@ categories.forEach((category) => {
     `<span class="emoji">${category.exemplar}</span>
      <span class="label">${category.label}</span>`
   /* When the user clicks on an item in the menu, pass along the id (i.e. the category name) to the getRandomEmoji function.  See also: https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget */
-  menuItem.addEventListener('click', event => { 
+  menuItem.addEventListener('click', event => {
     getRandomEmoji(event.currentTarget.id)
   })
   navMenu.appendChild(menuItem)
 })
 
- 
+
 /* This function fetches a random emoji from emojihub based on a given category. Once the emoji has been fetched, it gets added to the main content area on the page.  */
 const getRandomEmoji = (category) => {
   /* dynamically assemble a URL endpoint for the chosen category. Note the use of a plus (+) to concatenate / join strings. */
-  let endpointURL = `https://emojihub.yurace.pro/api/random/category/${category}` 
+  let endpointURL = `https://emojihub.yurace.pro/api/random/category/${category}`
   fetch(endpointURL)
     .then(response => response.json())
     .then(response => {
@@ -79,11 +79,11 @@ const getRandomEmoji = (category) => {
 
 }
 
-let navigation = document.createElement('nav') 
+let navigation = document.createElement('nav')
 fetch('../examples.json')
-.then(data => data.json())
-.then(json => { 
-    let template = json.map( example => `<a href="${example.url}">${example.name}</a>` ).join('') 
+  .then(data => data.json())
+  .then(json => {
+    let template = json.map(example => `<a href="..${example.url}">${example.name}</a>`).join('')
     navigation.innerHTML = `<a href="/">Home</a> ${template}`
-}) 
+  })
 document.querySelector('footer').appendChild(navigation)

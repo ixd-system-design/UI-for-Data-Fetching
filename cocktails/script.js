@@ -37,11 +37,11 @@ const getDrinks = (letter) => {
 
   // assemble an endpoint URL based on the the guidelines in the CocktailDB API documentation
   let url = new URL('https://www.thecocktaildb.com/api/json/v1/1/search.php')
-    url.searchParams.set('f', letter);
-    url.searchParams.set('limit', 10);
+  url.searchParams.set('f', letter);
+  url.searchParams.set('limit', 10);
 
   let anotherApproach = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
-  
+
   console.log(url.href)
 
   fetch(url.href)
@@ -78,11 +78,11 @@ const displayDrinks = (drinks) => {
   }
 }
 
-let navigation = document.createElement('nav') 
+let navigation = document.createElement('nav')
 fetch('../examples.json')
-.then(data => data.json())
-.then(json => { 
-    let template = json.map( example => `<a href="${example.url}">${example.name}</a>` ).join('') 
+  .then(data => data.json())
+  .then(json => {
+    let template = json.map(example => `<a href="..${example.url}">${example.name}</a>`).join('')
     navigation.innerHTML = `<a href="/">Home</a> ${template}`
-}) 
+  })
 document.querySelector('footer').appendChild(navigation)
