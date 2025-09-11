@@ -31,13 +31,41 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      # ---------- 1) Check if Pages is enabled ----------
+      - name: Detect GitHub Pages status
+        id: pages_status
+        run: |
+          set -e
+          http_status=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: Bearer ${{ github.token }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/pages)
+
+          if [ "$http_status" = "200" ]; then
+            echo "✅ Pages already enabled."
+            echo "deploy=yes" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice ::GitHub Pages is not enabled for this repository yet."
+            echo "::notice ::Enable it under Settings → Pages (select **GitHub Actions** as the source) and rerun the workflow."
+            echo "deploy=no" >> "$GITHUB_OUTPUT"
+          fi 
+      # ---------- 2) Stop early when Pages is disabled ----------
+      - name: Early‑exit (no deploy needed)
+        if: steps.pages_status.outputs.deploy == 'no'
+        run: echo "Skipping build & deploy because Pages is disabled."
+        # Workflow ends successfully here when deploy=no
+        continue-on-error: false
+
       - name: Setup Pages
+        if: steps.pages_status.outputs.deploy == 'yes'
         uses: actions/configure-pages@v5
       - name: Upload artifact
+        if: steps.pages_status.outputs.deploy == 'yes'
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
           path: '.'
       - name: Deploy to GitHub Pages
+        if: steps.pages_status.outputs.deploy == 'yes'
         id: deployment
         uses: actions/deploy-pages@v4
