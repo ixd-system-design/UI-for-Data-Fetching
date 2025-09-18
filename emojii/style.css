@@ -1,65 +1,91 @@
 /* Twentieth Century fonts are loaded via Monotype. See the head section in index.html for details.  */
-body{
-    text-align: center;
-    margin: 0;
-    font-family: 'TwentiethCenturyMedium'
+body {
+  text-align: center;
+  margin: 0;
+  font-family: 'TwentiethCenturyMedium'
 }
 
 /* Page layout is vertical and includes header, main, and footer. This is handled via a Flexbox column. */
 #page {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Menu items are arranged horizontally in a wrapping fashion. This is done with a center justified Flexbox row.  */
-#menu{  
-  display: flex; 
+#menu {
+  display: flex;
   flex-direction: row;
-  flex-wrap: wrap; 
-  justify-content: center; 
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* Each menuitem has two elements (the emoji and the label).  To arrange them vertically within the menuitem, a Flex column is used.  */
-#menu a{ 
+#menu a {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   height: 80px;
-  width: 120px; 
-  justify-content: center;  
+  width: 120px;
+  justify-content: center;
   cursor: pointer;
   border-radius: 1rem;
-} 
+}
 
 /* setup a simple hover effect on the navigation bar.*/
-#menu a:hover{ 
-  background: #eee;  
+#menu a:hover {
+  background: #eee;
 }
 
 
 /* Emojis and labels have different font sizes. I'm using relative units to set these. Read more info about relative units here: https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#ems_and_rems  */
-#menu .emoji{
+#menu .emoji {
   font-size: 1.2em;
 }
 
-#menu .label{ 
+#menu .label {
   font-size: 0.8em;
   margin-top: 0.3rem;
 }
 
 /* A large font size on main content yields a big emoji:  satisfying! */
-main#content{
-    font-size: 12rem;
-    flex-grow: 1;
+main#content {
+  font-size: 12rem;
+  flex-grow: 1;
+}
+
+/* Styling for the copy button */
+#copy-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-family: 'TwentiethCenturyMedium';
+  cursor: pointer;
+  margin: 1rem auto;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#copy-button:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#copy-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 
-footer{
-    padding: 1rem; 
-    font-family: 'TwentiethCenturyLightItalic'
+footer {
+  padding: 1rem;
+  font-family: 'TwentiethCenturyLightItalic'
 }
 
 
-nav{
+nav {
   display: flex;
   gap: 1rem;
   padding: 1rem;
