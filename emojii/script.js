@@ -63,39 +63,6 @@ categories.forEach((category) => {
 })
 
 
-/* Function to copy the current emoji to the clipboard */
-const copyEmojiToClipboard = () => {
-  const emoji = copyButton.dataset.emoji
-  if (emoji) {
-    /* Use the Clipboard API to copy the emoji */
-    navigator.clipboard.writeText(emoji).then(() => {
-      /* Provide visual feedback that the emoji was copied */
-      const originalText = copyButton.innerHTML
-      copyButton.innerHTML = '✅ Copied!'
-      setTimeout(() => {
-        copyButton.innerHTML = originalText
-      }, 2000)
-    }).catch(error => {
-      console.error('Failed to copy emoji:', error)
-      /* Fallback for browsers that don't support the Clipboard API */
-      copyButton.innerHTML = '❌ Copy failed'
-      setTimeout(() => {
-        copyButton.innerHTML = '📋 Copy Emoji'
-      }, 2000)
-    })
-  }
-}
-
-/* Create a copy button element that will be added to the page when an emoji is displayed */
-const copyButton = document.createElement('button')
-copyButton.innerHTML = '📋 Copy Emoji'
-copyButton.id = 'copy-button'
-copyButton.style.display = 'none' // Initially hidden
-copyButton.addEventListener('click', copyEmojiToClipboard)
-
-/* Add the copy button after the main content area */
-mainContent.parentNode.insertBefore(copyButton, mainContent.nextSibling)
-
 /* This function fetches a random emoji from emojihub based on a given category. Once the emoji has been fetched, it gets added to the main content area on the page.  */
 const getRandomEmoji = (category) => {
   /* dynamically assemble a URL endpoint for the chosen category. Note the use of a plus (+) to concatenate / join strings. */
@@ -107,10 +74,6 @@ const getRandomEmoji = (category) => {
       console.log(response)
       /* EmojiHUB stores the HTML Code for the emoji as the first (zeroeth) element of an array. Read more about arrays here: https://www.w3schools.com/js/js_arrays.asp  */
       mainContent.innerHTML = response.htmlCode[0]
-      /* Show the copy button now that we have an emoji to copy */
-      copyButton.style.display = 'block'
-      /* Store the current emoji for copying */
-      copyButton.dataset.emoji = response.htmlCode[0]
     })
     .catch(error => console.log(error))
 
